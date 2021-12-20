@@ -102,7 +102,7 @@ class CheckOutPage extends StatelessWidget {
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage(
-                        transaction.destinations.imageUrl,
+                        transaction.destination.imageUrl,
                       ),
                     ),
                   ),
@@ -112,7 +112,7 @@ class CheckOutPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        transaction.destinations.name,
+                        transaction.destination.name,
                         style: blackTextStyle.copyWith(
                           fontSize: 18,
                           fontWeight: medium,
@@ -120,7 +120,7 @@ class CheckOutPage extends StatelessWidget {
                       ),
                       SizedBox(height: 5),
                       Text(
-                        transaction.destinations.city,
+                        transaction.destination.city,
                         style: greyTextStyle.copyWith(
                           fontWeight: light,
                         ),
@@ -145,7 +145,7 @@ class CheckOutPage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      transaction.destinations.rating.toString(),
+                      transaction.destination.rating.toString(),
                       style: blackTextStyle.copyWith(
                         fontWeight: medium,
                       ),
@@ -170,12 +170,12 @@ class CheckOutPage extends StatelessWidget {
             //NOTE: BOOKING DETAILS ITEM
             BookingDetailsItem(
               title: 'Traveler',
-              valueText: '${transaction.amountOfTraveller} person',
+              valueText: '${transaction.amountOfTraveler} person',
               valueColor: kBlackColor,
             ),
             BookingDetailsItem(
               title: 'Seat',
-              valueText: transaction.selectedSeats,
+              valueText: transaction.selctedSeats,
               valueColor: kBlackColor,
             ),
             BookingDetailsItem(

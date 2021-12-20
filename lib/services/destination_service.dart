@@ -8,11 +8,10 @@ class DestinationService {
   Future<List<DestinationModel>> fetchDestinations() async {
     try {
       QuerySnapshot result = await _destinationReff.get();
+
       List<DestinationModel> destinations = result.docs.map((e) {
         return DestinationModel.fromJson(
-          e.id,
-          e.data() as Map<String, dynamic>,
-        );
+            e.id, e.data() as Map<String, dynamic>);
       }).toList();
 
       return destinations;

@@ -2,9 +2,10 @@ import 'package:airplane/models/destination_model.dart';
 import 'package:equatable/equatable.dart';
 
 class TransactionModel extends Equatable {
-  final DestinationModel destinations;
-  final int amountOfTraveller;
-  final String selectedSeats;
+  final String id;
+  final DestinationModel destination;
+  final int amountOfTraveler;
+  final String selctedSeats;
   final bool insurance;
   final bool refundable;
   final double vat;
@@ -12,9 +13,10 @@ class TransactionModel extends Equatable {
   final int grandTotal;
 
   TransactionModel({
-    required this.destinations,
-    this.amountOfTraveller = 0,
-    this.selectedSeats = '',
+    required this.destination,
+    this.id = '',
+    this.amountOfTraveler = 0,
+    this.selctedSeats = '',
     this.insurance = false,
     this.refundable = false,
     this.vat = 0,
@@ -22,12 +24,25 @@ class TransactionModel extends Equatable {
     this.grandTotal = 0,
   });
 
+  factory TransactionModel.fromJson(String id, Map<String, dynamic> json) =>
+      TransactionModel(
+        destination: DestinationModel.fromJson(
+            json['destination']['id'], json['destination']),
+        id: id,
+        amountOfTraveler: json['amountOfTraveler'],
+        selctedSeats: json['selctedSeats'],
+        insurance: json['insurance'],
+        refundable: json['refundable'],
+        vat: json['vat'],
+        price: json['price'],
+        grandTotal: json['grandTotal'],
+      );
+
   @override
-  // TODO: implement props
   List<Object?> get props => [
-        destinations,
-        amountOfTraveller,
-        selectedSeats,
+        destination,
+        amountOfTraveler,
+        selctedSeats,
         insurance,
         refundable,
         vat,
